@@ -22,14 +22,15 @@ class LoginPage extends StatelessWidget {
           child: SingleChildScrollView(
             padding: EdgeInsets.symmetric(horizontal: 25.0),
             child: Column(
+              mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const SizedBox(height: 50),
 
-                // logo
-                const Icon(
-                  Icons.lock,
-                  size: 100,
+                // college logo
+                Image.asset(
+                  'lib/images/college_logo.png',
+                  height: 150,
                 ),
 
                 const SizedBox(height: 50),
@@ -101,10 +102,7 @@ class LoginPage extends StatelessWidget {
                       ),
                     ),
                     Expanded(
-                      child: Divider(
-                        thickness: 0.5,
-                        color: Colors.grey[400],
-                      ),
+                      child: Divider(thickness: 0.5, color: Colors.grey[400]),
                     ),
                   ],
                 ),
@@ -121,7 +119,7 @@ class LoginPage extends StatelessWidget {
                     SizedBox(width: 25),
 
                     // apple button
-                    SquareTile(imagePath: 'lib/images/apple.png')
+                    SquareTile(imagePath: 'lib/images/apple.png'),
                   ],
                 ),
 
