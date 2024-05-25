@@ -35,6 +35,7 @@ flutter:
     - lib/images/college_logo.png
     - lib/images/google.png
     - lib/images/apple.png
+    - lib/images/alvas_college.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

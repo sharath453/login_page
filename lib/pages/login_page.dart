@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:leave_book/components/my_button.dart';
 import 'package:leave_book/components/my_textfiled.dart';
-import 'package:leave_book/components/square_tile.dart';
+import 'package:leave_book/homepage/home_page.dart';
 
 class LoginPage extends StatelessWidget {
   LoginPage({Key? key}) : super(key: key);
@@ -23,11 +23,9 @@ class LoginPage extends StatelessWidget {
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => HomeScreen(),
+            builder: (context) => HomePage(), // Navigate to HomePage
           ),
         );
-      } else {
-        // Show error message or handle authentication failure
       }
     } else {
       // Show error message indicating that both fields are required
@@ -57,7 +55,7 @@ class LoginPage extends StatelessWidget {
                 // college logo (replace with your actual image)
                 Image.asset(
                   'lib/images/college_logo.png',
-                  height: 150,
+                  height: 250,
                 ),
 
                 const SizedBox(height: 50),
@@ -98,45 +96,12 @@ class LoginPage extends StatelessWidget {
                   label: 'Sign In',
                 ),
 
-                const SizedBox(height: 20),
-
-                // Google and Apple logo buttons
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    // Google button
-                    SquareTile(imagePath: 'lib/images/google.png'),
-
-                    SizedBox(width: 25),
-
-                    // Apple button
-                    SquareTile(imagePath: 'lib/images/apple.png'),
-                  ],
-                ),
-
                 const SizedBox(height: 50),
 
                 // Other UI elements...
               ],
             ),
           ),
-        ),
-      ),
-    );
-  }
-}
-
-class HomeScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Home'),
-      ),
-      body: Center(
-        child: Text(
-          'Welcome to Home Screen!',
-          style: TextStyle(fontSize: 20),
         ),
       ),
     );
