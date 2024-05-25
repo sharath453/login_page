@@ -10,20 +10,33 @@ class LoginPage extends StatelessWidget {
   final TextEditingController passwordController = TextEditingController();
 
   void signUserIn(BuildContext context) {
-    // Authentication logic...
-    // For now, let's assume authentication is successful
-    bool isAuthenticated = true;
+    String username = usernameController.text;
+    String password = passwordController.text;
 
-    if (isAuthenticated) {
-      // Navigate to the HomeScreen
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-            builder: (context) =>
-                HomeScreen()), // Replace HomeScreen with your home screen code
-      );
+    if (username.isNotEmpty && password.isNotEmpty) {
+      // Authentication logic...
+      // For now, let's assume authentication is successful
+      bool isAuthenticated = true;
+
+      if (isAuthenticated) {
+        // Navigate to the HomeScreen
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => HomeScreen(),
+          ),
+        );
+      } else {
+        // Show error message or handle authentication failure
+      }
     } else {
-      // Show error message or handle authentication failure
+      // Show error message indicating that both fields are required
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Please enter both username and password.'),
+          duration: Duration(seconds: 2),
+        ),
+      );
     }
   }
 
