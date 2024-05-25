@@ -4,14 +4,28 @@ import 'package:leave_book/components/my_textfiled.dart';
 import 'package:leave_book/components/square_tile.dart';
 
 class LoginPage extends StatelessWidget {
-  LoginPage({super.key});
+  LoginPage({Key? key}) : super(key: key);
 
-  // text editing controllers
-  final usernameController = TextEditingController();
-  final passwordController = TextEditingController();
+  final TextEditingController usernameController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
-  // sign user in method
-  void signUserIn() {}
+  void signUserIn(BuildContext context) {
+    // Authentication logic...
+    // For now, let's assume authentication is successful
+    bool isAuthenticated = true;
+
+    if (isAuthenticated) {
+      // Navigate to the HomeScreen
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+            builder: (context) =>
+                HomeScreen()), // Replace HomeScreen with your home screen code
+      );
+    } else {
+      // Show error message or handle authentication failure
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +41,7 @@ class LoginPage extends StatelessWidget {
               children: [
                 const SizedBox(height: 50),
 
-                // college logo
+                // college logo (replace with your actual image)
                 Image.asset(
                   'lib/images/college_logo.png',
                   height: 150,
@@ -63,89 +77,53 @@ class LoginPage extends StatelessWidget {
                   obscureText: true,
                 ),
 
-                const SizedBox(height: 10),
-
-                // forgot password?
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Text(
-                      'Forgot Password?',
-                      style: TextStyle(color: Colors.grey[600]),
-                    ),
-                  ],
-                ),
-
-                const SizedBox(height: 25),
+                const SizedBox(height: 20),
 
                 // sign in button
                 MyButton(
-                  onTap: signUserIn,
+                  onTap: () => signUserIn(context),
+                  label: 'Sign In',
                 ),
 
-                const SizedBox(height: 50),
+                const SizedBox(height: 20),
 
-                // or continue with
-                Row(
-                  children: [
-                    Expanded(
-                      child: Divider(
-                        thickness: 0.5,
-                        color: Colors.grey[400],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                      child: Text(
-                        'Or continue with',
-                        style: TextStyle(color: Colors.grey[700]),
-                      ),
-                    ),
-                    Expanded(
-                      child: Divider(thickness: 0.5, color: Colors.grey[400]),
-                    ),
-                  ],
-                ),
-
-                const SizedBox(height: 50),
-
-                // google + apple sign in buttons
+                // Google and Apple logo buttons
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    // google button
+                  children: [
+                    // Google button
                     SquareTile(imagePath: 'lib/images/google.png'),
 
                     SizedBox(width: 25),
 
-                    // apple button
+                    // Apple button
                     SquareTile(imagePath: 'lib/images/apple.png'),
                   ],
                 ),
 
                 const SizedBox(height: 50),
 
-                // not a member? register now
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Not a member?',
-                      style: TextStyle(color: Colors.grey[700]),
-                    ),
-                    const SizedBox(width: 4),
-                    const Text(
-                      'Register now',
-                      style: TextStyle(
-                        color: Colors.blue,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
-                ),
+                // Other UI elements...
               ],
             ),
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class HomeScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Home'),
+      ),
+      body: Center(
+        child: Text(
+          'Welcome to Home Screen!',
+          style: TextStyle(fontSize: 20),
         ),
       ),
     );
